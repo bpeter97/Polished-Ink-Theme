@@ -6,7 +6,7 @@
             <img class="" src="/img/artists.png" alt="" />
           </div>
         </div> -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center team-row">
           <!-- Team members -->
             <?php if(is_active_sidebar('artists')) : ?>
               <?php dynamic_sidebar('artists'); ?>
@@ -25,9 +25,9 @@
         </div> -->
         <div class="row">
           <div class="row">
-            <div class="col-sm-12 mb-4 mt-4">
-            <?= do_shortcode('[foogallery id="92"]'); ?>
-            </div>
+          <?php if(is_active_sidebar('galleryshortcode')) : ?>
+            <?php dynamic_sidebar('galleryshortcode'); ?>
+          <?php endif; ?>
           </div>
         </div>
       </div>
@@ -88,9 +88,9 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-12">
-              <?= do_shortcode('[contact-form-7 id="93" title="Contact form 1"]'); ?>
-              </div>
+            <?php if(is_active_sidebar('contactshortcode')) : ?>
+              <?php dynamic_sidebar('contactshortcode'); ?>
+            <?php endif; ?>
             </div>
           </div>
         </div>

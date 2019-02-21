@@ -15,51 +15,39 @@ if( ! class_exists('WP_Bootstrap_Artist_Card')){
   
     function widget( $args, $instance ) {
       echo $args['before_widget'];
-        echo '<div class="image-flip" ontouchstart="this.classList.toggle(\'hover\');">';
-          echo '<div class="mainflip">';
-            echo '<div class="frontside">';
-              echo '<div class="card">';
-                echo '<div class="card-body text-center artist-1">';
-                  echo '<div class="mt-5">';
-                    echo '<h4 class="card-title">' . $instance['name'] . '</h4>';
-                    echo '<p class="card-text">' . $instance['front_description'] . '</p>';                  
-                    echo '<a href="#" class="btn btn-primary btn-sm mt-5">';
-                      echo '<i class="fa fa-plus"></i>';
-                    echo '</a>';
-                  echo '</div>';
-                echo '</div>';
-              echo '</div>';
-            echo '</div>';
-            echo '<div class="backside">';
-              echo '<div class="card">';
-                echo '<div class="card-body text-center mt-4">';
-                echo '<h4 class="card-title">' . $instance['name'] . '</h4>';
-                echo '<p class="card-text">' . $instance['back_description'] . '</p>';
-                echo '<ul class="list-inline">';
-                  echo '<li class="list-inline-item">';
-                    echo '<a class="social-icon text-xs-center" target="_blank" href="#">';
-                      echo '<i class="fab fa-facebook-f"></i>';
-                    echo '</a>';
-                  echo '</li>';
-                echo '<li class="list-inline-item">';
-                  echo '<a class="social-icon text-xs-center" target="_blank" href="#">';
-                    echo '<i class="fab fa-twitter"></i>';
-                      echo '</a>';
-                    echo '</li>';
-                  echo '</ul>';
+      echo '<div class="team-member text-center">';
+        echo '<div class="team-img">';
+          echo '<img src="'. get_bloginfo('template_url') .'/img/emptyperson.png" alt="">';
+          echo '<div class="overlay-team">';
+            echo '<div class="team-details text-center">';
+              echo '<div class="socials mt-20">';
+              echo '<h5 class="team-title">'. $instance['name'] .'</h5>';
+              echo '<h6>' . $instance['position'] . '</h6>';
+                echo '<a href="#">';
+                  echo '<i class="fab fa-facebook"></i>';
+                echo '</a>';
+                echo '<a href="#">';
+                  echo '<i class="fab fa-twitter"></i>';
+                echo '</a>';
+                echo '<a href="#">';
+                  echo '<i class="fab fa-google-plus"></i>';
+                echo '</a>';
+                echo '<a href="#">';
+                  echo '<i class="fab fa-envelope"></i>';
+                echo '</a>';
               echo '</div>';
             echo '</div>';
           echo '</div>';
         echo '</div>';
       echo '</div>';
-    echo $args['after_widget'];
+      echo $args['after_widget'];
     }
   
     function update($new_instance, $old_instance) {
       $instance = $old_instance;
       // Fields
       $instance['name'] = strip_tags($new_instance['name']);
-      $instance['front_description'] = strip_tags($new_instance['front_description']);
+      $instance['position'] = strip_tags($new_instance['position']);
       $instance['back_description'] = strip_tags($new_instance['back_description']);
       return $instance;
     }
@@ -67,13 +55,13 @@ if( ! class_exists('WP_Bootstrap_Artist_Card')){
     // Widget form creation
     function form($instance) {
        $name = '';
-      $frontdescription = '';
+      $position = '';
       $backdescription = '';
   
       // Check values
       if( $instance) {
         $name = esc_attr($instance['name']);
-        $frontdescription = esc_textarea($instance['front_description']);
+        $position = esc_textarea($instance['position']);
         $backdescription = esc_textarea($instance['back_description']);
       } ?>
        
@@ -83,8 +71,8 @@ if( ! class_exists('WP_Bootstrap_Artist_Card')){
       </p>
 
       <p>
-        <label for="<?php echo $this->get_field_id('front_description'); ?>"><?php _e('Short Description', 'wp_widget_plugin'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('front_description'); ?>" name="<?php echo $this->get_field_name('front_description'); ?>" type="text" value="<?php echo $frontdescription; ?>" />
+        <label for="<?php echo $this->get_field_id('position'); ?>"><?php _e('Position', 'wp_widget_plugin'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('position'); ?>" name="<?php echo $this->get_field_name('position'); ?>" type="text" value="<?php echo $position; ?>" />
       </p>
 
       <p>

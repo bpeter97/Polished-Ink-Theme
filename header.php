@@ -38,6 +38,30 @@
     <!-- Custom styles for this template -->
     <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet" />
     <?php wp_head(); ?>
+    <style>
+      header.masthead {
+        position: relative;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 100px;
+        color: white;
+        background: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(rgba(0, 0, 0, 0.5)),
+          to(rgba(0, 0, 0, 0.5))
+        ),
+          url(<?= get_theme_mod('landing_page_image', get_bloginfo('template_url').'/img/showcase.jpg') ?>);
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url(<?= get_theme_mod('landing_page_image', get_bloginfo('template_url').'/img/showcase.jpg') ?>);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        min-height: 100%;
+      }
+    </style>
   </head>
 
   <body id="page-top">
@@ -96,9 +120,7 @@
           <div class="col-lg-12 my-auto">
             <div class="header-content mx-auto text-center">
               <h1 class="mb-5 header-landing-text">
-              <?php if(is_active_sidebar('mainmessage')) : ?>
-                <?php dynamic_sidebar('mainmessage'); ?>
-              <?php endif; ?>
+              <?= get_theme_mod('landing_page_message', 'hello world'); ?>
               </h1>
               <a
                 href="#contact"
