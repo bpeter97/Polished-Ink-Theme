@@ -1,6 +1,6 @@
 <?php get_header(); ?>
     <section id="artists" class="artists">
-      <div class="container">
+      <div class="container pb-4">
         <!-- <div class="d-flex flex-row text-center w-100">
           <div class="col-12 artist-logo">
             <img class="" src="/img/artists.png" alt="" />
@@ -8,9 +8,46 @@
         </div> -->
         <div class="row justify-content-center team-row">
           <!-- Team members -->
-            <?php if(is_active_sidebar('artists')) : ?>
-              <?php dynamic_sidebar('artists'); ?>
-            <?php endif; ?>
+          <?php 
+            $num_of_artists = get_theme_mod('artist_section_number_of_artists', 0);
+            
+            for ($x = 1; $x <= $num_of_artists; $x++) {
+              echo '<div class="col team-wrap" style="max-width: 400px">';
+                echo '<div class="team-member text-center">';
+                  echo '<div class="team-img" style=";background: url('. get_theme_mod('artist_'.$x.'_image', get_bloginfo('template_url').'/img/emptyperson.png') .');background-size: cover;">';
+                    echo '<div class="overlay-team">';
+                      echo '<div class="team-details text-center">';
+                        echo '<div class="socials mt-20">';
+                        echo '<h5 class="team-title">'. get_theme_mod('artist_'.$x.'_name',"Full Name") .'</h5>';
+                        echo '<h6>' . get_theme_mod('artist_'.$x.'_position',"Position") . '</h6>';
+                        if(get_theme_mod('artist_'.$x.'_facebook') != "") {
+                          echo '<a class="fb" href="'. get_theme_mod('artist_'.$x.'_facebook') .'">';
+                            echo '<i class="fab fa-facebook"></i>';
+                          echo '</a>';
+                        }
+                        if(get_theme_mod('artist_'.$x.'_twitter') != "") {
+                          echo '<a class="twitter" href="'. get_theme_mod('artist_'.$x.'_twitter') .'">';
+                            echo '<i class="fab fa-twitter"></i>';
+                          echo '</a>';
+                        }
+                        if(get_theme_mod('artist_'.$x.'_instagram') != "") {
+                          echo '<a class="instagram" href="'. get_theme_mod('artist_'.$x.'_instagram') .'">';
+                            echo '<i class="fab fa-instagram"></i>';
+                          echo '</a>';
+                        }
+                        if(get_theme_mod('artist_'.$x.'_email') != "") {
+                          echo '<a class="email" href="mailto:'. get_theme_mod('artist_'.$x.'_email') .'">';
+                            echo '<i class="fas fa-envelope"></i>';
+                          echo '</a>';
+                        }
+                        echo '</div>';
+                      echo '</div>';
+                    echo '</div>';
+                  echo '</div>';
+                echo '</div>';
+              echo '</div>';
+            }
+          ?>
           <!-- ./Team members -->
         </div>
       </div>
@@ -53,9 +90,18 @@
             </div>
           </div>
           <div class="row text-center">
-            <?php if(is_active_sidebar('workhours')) : ?>
-              <?php dynamic_sidebar('workhours'); ?>
-            <?php endif; ?>
+          <?php 
+            $num_of_days = get_theme_mod('num_of_days_worked', 0);
+
+            for ($x = 1; $x <= $num_of_days; $x++) {
+              echo '<div class="col day-container">';
+                echo '<div class="row h-100 text-center justify-content-center">';
+                  echo '<p class="col-12 mt-auto mb-auto day-text">'. get_theme_mod('day_'.$x.'_name') .'</p>';
+                  echo '<p class="col-12 mt-auto mb-auto time-text">' . get_theme_mod('day_'.$x.'_time') . '</p>';
+                echo '</div>';
+              echo '</div>';
+            }
+          ?>
           </div>
         </div>
       </div>
@@ -66,9 +112,30 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-6 text-small-center">
-            <?php if(is_active_sidebar('contact')) : ?>
-              <?php dynamic_sidebar('contact'); ?>
-            <?php endif; ?>
+            <div class="row pb-3">
+              <div class="col-12">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/pi-logo.png" alt="" />
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-12">
+                <h2>Address</h2>
+                <p class="mb-0"><?= get_theme_mod('shop_street_address') ?></p>
+                <p class="mt-1"><?= get_theme_mod('shop_city_address') ?></p>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-12">
+                <h2>Phone</h2>
+                <p><?= get_theme_mod('shop_phone_number') ?></p>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-12">
+                <h2>Email</h2>
+                <p class="mb-0"><?= get_theme_mod('shop_email') ?></p>
+              </div>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div

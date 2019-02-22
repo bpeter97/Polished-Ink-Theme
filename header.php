@@ -52,9 +52,9 @@
           from(rgba(0, 0, 0, 0.5)),
           to(rgba(0, 0, 0, 0.5))
         ),
-          url(<?= get_theme_mod('landing_page_image', get_bloginfo('template_url').'/img/showcase.jpg') ?>);
+          url(<?= get_theme_mod('landing_section_image', get_bloginfo('template_url').'/img/showcase.jpg') ?>);
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url(<?= get_theme_mod('landing_page_image', get_bloginfo('template_url').'/img/showcase.jpg') ?>);
+          url(<?= get_theme_mod('landing_section_image', get_bloginfo('template_url').'/img/showcase.jpg') ?>);
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -67,7 +67,7 @@
   <body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top <?= is_user_logged_in() ? 'mt-4 pt-3' : '' ?>" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top <?= is_admin_bar_showing() ? 'mt-4 pt-3' : '' ?>" id="mainNav">
       <div class="container">
         <div class="d-sm-block d-md-none">
           <a class="navbar-brand nav-link m-0 w-50" href="#page-top"
@@ -92,12 +92,12 @@
           class="navbar-toggler mr-4"
           type="button"
           data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
+          data-target="#bs-example-navbar-collapse-1"
+          aria-controls="bs-example-navbar-collapse-1"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i class="fas fa-bars"></i>
+        <span class="navbar-toggler-icon"></span>
         </button>
         <?php
           wp_nav_menu( array(
@@ -109,7 +109,7 @@
             'menu_class'      => 'navbar-nav ml-auto',
             'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
             'walker'          => new WP_Bootstrap_Navwalker(),
-          ));
+          ) );
         ?>
       </div>
     </nav>
@@ -120,7 +120,7 @@
           <div class="col-lg-12 my-auto">
             <div class="header-content mx-auto text-center">
               <h1 class="mb-5 header-landing-text">
-              <?= get_theme_mod('landing_page_message', 'hello world'); ?>
+              <?= get_theme_mod('landing_section_message'); ?>
               </h1>
               <a
                 href="#contact"

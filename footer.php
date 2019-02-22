@@ -1,8 +1,16 @@
 <footer>
       <div class="container">
-        <?php if(is_active_sidebar('footersocialmedia')) : ?>
-          <?php dynamic_sidebar('footersocialmedia'); ?>
-        <?php endif; ?>
+        <?php 
+        if(get_theme_mod('footer_facebook') != "") {
+          echo '<ul class="list-inline list-social">';
+            echo '<li class="list-inline-item social-facebook">';
+              echo '<a href="'. get_theme_mod('footer_facebook') .'">';
+                echo '<i class="fab fa-facebook-f"></i>';
+              echo '</a>';
+            echo '</li>';
+          echo '</ul>';
+        }
+        ?>
         <p class="pt-3">&copy; <?php bloginfo('name'); ?> <?= Date('Y')==2019 ? Date('Y') : "2019 - " . Date('Y') ?>. All Rights Reserved.</p>
       </div>
     </footer>
